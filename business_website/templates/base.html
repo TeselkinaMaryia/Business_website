@@ -39,21 +39,22 @@
                 <ul class="dropdown-menu">
                     <li>
                         <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="http://127.0.0.1:8000/about/">About</a>
+                                                                       href="{% url 'about' %}">About</a>
                         </button>
                     </li>
                     <li>
                         <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="http://127.0.0.1:8000/about/leadership/">Leadership</a>
+                                                                       href="{% url 'leadership' %}">Leadership</a>
                         </button>
                     </li>
                     <li>
                         <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="http://127.0.0.1:8000/about/history/">History</a>
+                                                                       href="{% url 'history' %}">History</a>
                         </button>
                     </li>
                     <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink" href="/">Contact</a>
+                        <button class="dropdown-item" type="button"><a class="NavigationLink"
+                                                                       href="{% url 'contacts' %}">Contact</a>
                         </button>
                     </li>
                 </ul>
@@ -107,7 +108,7 @@
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="http://127.0.0.1:8000/about/" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}" class="nav-link px-2 text-muted">About</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">News</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Career</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">ASK</a></li>

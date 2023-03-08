@@ -34,3 +34,7 @@ def senior_employees_more(request, pk):
         'senior_employee': senior_employee
     }
     return render(request, 'about_leadership_senior_employee.html', context)
+
+
+def contacts(request):
+    return render(request, 'about_contacts.html')
