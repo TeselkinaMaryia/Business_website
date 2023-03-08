@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% block title_content %}
-{{ employee.name }} {{ employee.second_name }}
+{{ senior_employee.name }} {{ senior_employee.second_name }}
 {% endblock %}
 
 {% block page_content %}
 <div class="row featurette">
     <div class="col-md-7 order-md-2">
-        <h3 class="featurette-heading fw-normal lh-1">{{ employee.name }} {{ employee.second_name }}</h3>
-        <p class="lead"><strong>Post:</strong> {{ employee.post }}</p>
+        <h3 class="featurette-heading fw-normal lh-1">{{ senior_employee.name }} {{ senior_employee.second_name }}</h3>
+        <p class="lead"><strong>Post:</strong> {{ senior_employee.post }}</p>
     </div>
     <div class="col-md-5 order-md-1">
-        <img src="{{ employee.photo.url }}" alt="employee"
+        <img src="{{ senior_employee.photo.url }}" alt="employee"
              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
              height="500">
     </div>
 </div>
 <hr class="featurette-divider">
-<p>{{ employee.information }}</p>
+<p>{{ senior_employee.information }}</p>
 
 
 {% endblock %}
