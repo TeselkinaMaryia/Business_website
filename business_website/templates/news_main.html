@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+News
+{% endblock %}
+
+{% block page_content %}
+
+
+<form class="ListNewsCardGrid-search" data-searchnews-module action="https://corporate.walmart.com/news/" novalidate=""
+      autocomplete="off">
+    <legend class="ListNewsCardGrid-search-label">Search News</legend>
+    <input type="text" class="ListNewsCardGrid-search-searchInput" placeholder="" name="newsSearchModuleQuery">
+    <div class="ListNewsCardGrid-search-filters-wrapper"
+         data-topics-array='[{&quot;topic&quot;:&quot;All Topics&quot;,&quot;id&quot;:&quot;&quot;},{&quot;topic&quot;:&quot;Business&quot;,&quot;id&quot;:&quot;00000144-4c0a-d175-ad67-cd8e5d1c0000&quot;},{&quot;topic&quot;:&quot;Community&quot;,&quot;id&quot;:&quot;00000144-4c0c-d175-ad67-cd8c81660000&quot;},{&quot;topic&quot;:&quot;Health &amp; Wellness&quot;,&quot;id&quot;:&quot;00000144-4c0b-d5b3-a5e4-dd9f8dc40000&quot;},{&quot;topic&quot;:&quot;Innovation&quot;,&quot;id&quot;:&quot;00000144-4c0c-d5b3-a5e4-dd9df04e0000&quot;},{&quot;topic&quot;:&quot;Opportunity&quot;,&quot;id&quot;:&quot;00000144-4c0c-d679-abcc-ffee0b7c0000&quot;},{&quot;topic&quot;:&quot;Sustainability&quot;,&quot;id&quot;:&quot;00000144-4c09-d5b3-a5e4-dd9d770c0000&quot;},{&quot;topic&quot;:&quot;U.S. Manufacturing&quot;,&quot;id&quot;:&quot;00000149-7732-d2a4-a74d-f7b394450000&quot;},{&quot;topic&quot;:&quot;Finance&quot;,&quot;id&quot;:&quot;00000181-fee9-d250-a1e9-fffdc89d000d&quot;},{&quot;topic&quot;:&quot;Holidays&quot;,&quot;id&quot;:&quot;00000183-1252-da2d-add3-537fdbae0000&quot;},{&quot;topic&quot;:&quot;Working at Walmart&quot;,&quot;id&quot;:&quot;00000183-d377-df74-a5cf-fbf79f4b0000&quot;},{&quot;topic&quot;:&quot;International&quot;,&quot;id&quot;:&quot;00000185-e88a-d0e1-a79f-ebce7acb0000&quot;}]'>
+        <select class="ListNewsCardGrid-search-filters" data-topicfilter-select name="newsSearchModuleTopic">
+            <option value="">Filter by Topics</option>
+        </select>
+    </div>
+
+</form>
+
+
+<h1 align="center">News</h1>
+<div class="'row">
+    {% for one in news %}
+    <div class="col-md-4">
+        <img class="card-img-top" src="{{ one.image.url }}">
+        <div class="card-body">
+
+            <h4>{{ one.title }}</h4>
+            <h6>{{ one.category }}</h6>
+            <p>{{ one.date }}</p>
+            <a href="{% url 'news_more' one.pk %}" class="btn btn-primary">
+                Read more
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

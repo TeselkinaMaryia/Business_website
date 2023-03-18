@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+{{ one_news.title }}
+{% endblock %}
+
+{% block page_content %}
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h3 class="featurette-heading fw-normal lh-1">{{ one_news.title }}</h3>
+        <h5>{{ one_news.author }}</h5>
+        <p class="lead">{{ one_news.category }} | {{ one_news.date }}</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img src="{{ one_news.image.url }}" alt="news"
+             class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+             height="500">
+    </div>
+</div>
+<hr class="featurette-divider">
+<p>{{ one_news.text }}</p>
+
+
+{% endblock %}

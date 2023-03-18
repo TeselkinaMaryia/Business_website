@@ -19,11 +19,13 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_page, name='main page'),
-    path('about/', include('about.urls'), name='about')
+    path('about/', include('about.urls'), name='about'),
+    path('news/', include('news_final.urls'), name='news'),
+    path('career/', include('career.urls'), name='career'),
+    path('ask/', include('ask.urls'), name='ask')
 ]
 
 if settings.DEBUG:

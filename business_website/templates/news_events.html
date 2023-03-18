@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+Events
+{% endblock %}
+
+{% block page_content %}
+<div class="'col-md-8 offset-md-2">
+    <h1>Events</h1>
+    {% for conference in conferences %}
+    <h2><a href="{% url 'events_more' conference.pk %}">{{ conference.topic }}</a></h2>
+    <small>
+        {{ conference.date }} {{ conference.time }} | {{ conference.place }}
+        <br>
+        Category: &nbsp;
+        {% for category in conference.categories.all %}
+        <a href="{% url 'events_category' category.name %}">{{ category.name }}</a>&nbsp;
+        {% endfor %}
+    </small>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+{{category.name }}
+{% endblock %}
+
+{% block page_content %}
+
+<div class="'col-md-8 offset-md-2">
+    <h1>{{ category | title }}</h1>
+    <hr>
+    {% for conference in conferences %}
+    <h2><a href="{% url 'events_more' conference.pk %}">{{ conference.topic }}</a></h2>
+    <small>
+        {{ conference.date }} | {{ conference.time }}
+        {{ conference.place }}
+        Category:&nbsp;
+        {% for category in conference.categories.all %}
+        <a href="{% url 'events_category' category.name %}">{{ category.name }}</a>&nbsp;
+        {% endfor %}
+    </small>
+
+    <p>{{conference.about | slice:":200" }}...</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

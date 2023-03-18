@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+{{ conference.topic }}
+{% endblock %}
+
+{% block page_content %}
+
+<div class="col-md-8 offset-md-2">
+    <h1>{{conference.topic }}</h1>
+    <small>
+        {{ conference.date }} {{conference.time }}
+        {{conference.place}}
+        Category:&nbsp;
+        {% for category in conference.categories.all %}
+        <a href="{% url 'events_category' category.name %}">{{ category.name }}</a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ conference.about | linebreaks }}</p>
+    <p><strong>Total seats - {{  conference.number_of_people }}</strong></p>
+    <p><strong>Free places - {{ free_places }}</strong></p>
+    <br>
+    <br>
+    <h3>Register for the conference</h3>
+    <form action="{% url 'events_more' conference.pk %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            {{ form.second_name }}
+        </div>
+        <div class="form-group">
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.number_of_people }}
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+    <h3>Conference participants</h3>
+    <table border="2" align="center" width="100%">
+        <tr>
+            <td>Name</td>
+            <td>Second name</td>
+            <td>Number of reserved seats</td>
+        </tr>
+        {% for registration in registrations %}
+        <tr>
+            <td>{{ registration.name }}</td>
+            <td>{{ registration.second_name }}</td>
+            <td>{{ registration.number_of_people }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}
