@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+{{ brand.name }}
+{% endblock %}
+
+{% block page_content %}
+
+<h1>{{ brand | title }}</h1>
+{% for laptop in laptops %}
+<div class="row featurette">
+    <div class="col-md-7">
+        <h3 class="featurette-heading fw-normal lh-1"><a href="{% url 'goods_more' laptop.pk %}">{{ laptop.name }}</a></h3>
+        <div class="result__attrs">
+            <table>
+                <tr>
+                    <td class='result__attr_var'>Brand</td>
+                    <td class='result__attr_val'>{{ laptop.brand }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var'>Screen Size</td>
+                    <td class='result__attr_val'>{{ laptop.screen_size }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var '>Color</td>
+                    <td class='result__attr_val '>{{ laptop.color }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var'>Hard Disk Size</td>
+                    <td class='result__attr_val'>{{ laptop.hard_disk_size }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var '>CPU Model</td>
+                    <td class='result__attr_val '>{{ laptop.cpu_model }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var'>Ram Memory Installed Size</td>
+                    <td class='result__attr_val'>{{ laptop.ram_memory_installed_size }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var '>Operating System</td>
+                    <td class='result__attr_val '>{{ laptop.operation_system }}</td>
+                </tr>
+                <tr>
+                    <td class='result__attr_var'>Graphics Card Description</td>
+                    <td class='result__attr_val'>{{ laptop.graphics_card_description }}</td>
+                </tr>
+            </table>
+            <h4><strong>Price:</strong>{{ laptop.price }}</h4>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ laptop.image_1.url }}" alt="picture" width="500" height="500">
+        </div>
+    </div>
+</div>
+<hr class="featurette-divider">
+{% endfor %}
+
+{% endblock %}

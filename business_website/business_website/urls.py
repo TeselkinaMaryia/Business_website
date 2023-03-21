@@ -25,7 +25,9 @@ urlpatterns = [
     path('about/', include('about.urls'), name='about'),
     path('news/', include('news_final.urls'), name='news'),
     path('career/', include('career.urls'), name='career'),
-    path('ask/', include('ask.urls'), name='ask')
+    path('ask/', include('ask.urls'), name='ask'),
+    path('shop/', include('django.contrib.auth.urls')),
+    path('shop/', include('shop.urls'), name='shop'),
 ]
 
 if settings.DEBUG:

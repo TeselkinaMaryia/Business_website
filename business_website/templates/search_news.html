@@ -1,23 +1,17 @@
 {% extends "base.html" %}
 
 {% block title_content %}
-News
+Search
 {% endblock %}
 
 {% block page_content %}
 
-<h1 align="center">News</h1>
 
-<form class="d-flex" method="post" action="{% url 'search_news' %}">
-    {% csrf_token %}
-    <input class="form-control me-2" type="search" placeholder="Search for the title of the news" aria-label="Search"
-           name="searched">
-    <button class="btn btn-outline-secondary" type="submit">Search</button>
-</form>
-<br>
-
-<div class="'row">
-    {% for one in news %}
+  {% if searched %}
+  <h1 align="center">You Searched for {{ searched }}</h1>
+  <br>
+  <div class="'row">
+  {% for one in news %}
     <div class="col-md-4">
         <img class="card-img-top" src="{{ one.image.url }}">
         <div class="card-body">
@@ -31,5 +25,12 @@ News
         </div>
     </div>
     {% endfor %}
-</div>
+  </div>
+
+  {% else %}
+  <h1 align="center">Did you forget to search?</h1>
+  {% endif %}
+
+
+
 {% endblock %}

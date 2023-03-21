@@ -7,4 +7,5 @@ urlpatterns = [
     path('events/', views.news_events, name='events'),
     path('events/<int:pk>/', views.events_more, name='events_more'),
     path('events/<category>/', views.events_category, name='events_category'),
+    path('search/', views.search_news, name='search_news')
 ]

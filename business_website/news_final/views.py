@@ -38,27 +38,6 @@ def events_category(request, category):
 
 def events_more(request, pk):
     conference = models.Conference.objects.get(pk=pk)
-    # form = forms.RegistrationForm()
-    #
-    # if request.method == 'POST':
-    #     form = forms.RegistrationForm(request.POST)
-    #     if form.is_valid():
-    #         registration = models.Registration(
-    #             name=form.cleaned_data['name'],
-    #             second_name=form.cleaned_data['second_name'],
-    #             email=form.cleaned_data['email'],
-    #             number_of_people=form.cleaned_data['number_of_people'],
-    #             conference=conference
-    #         )
-    #         registration.save()
-    # registrations = models.Registration.objects.filter(conference=conference)
-    #
-    # context = {
-    #     'conference': conference,
-    #     'registrations': registrations,
-    #     'form': form
-    # }
-    # return render(request, 'events_more.html', context)
 
     if models.Registration.objects.all():
         get_places = []
@@ -112,3 +91,16 @@ def events_more(request, pk):
             'form': form
         }
         return render(request, 'events_more.html', context)
+
+
+def search_news(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        news = models.News.objects.filter(title__contains=searched)
+        context = {
+            'searched': searched,
+            'news': news
+        }
+        return render(request, 'search_news.html', context)
+    else:
+        return render(request, 'search_news.html')
