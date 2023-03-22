@@ -20,6 +20,9 @@ class Laptops(models.Model):
     stock = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
 
+    class Meta:
+        index_together = (('id', 'name'),)
+
     def __str__(self):
         return self.name
 

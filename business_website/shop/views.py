@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from . import forms
 from . import models
+from cart import forms
 
 
 def shop_main(request):
@@ -25,8 +26,10 @@ def shop_brand(request, brand):
 
 def goods_more(request, pk):
     laptop = models.Laptops.objects.get(pk=pk)
+    cart_laptop_form = forms.CartAddLaptop()
     context = {
-        'laptop': laptop
+        'laptop': laptop,
+        'cart_laptop_form': cart_laptop_form
     }
     return render(request, 'shop/goods_more.html', context)
 

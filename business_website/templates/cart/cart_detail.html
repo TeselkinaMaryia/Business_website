@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_content %}
+Your shopping cart
+{% endblock %}
+
+{% block style_content %}
+TABLE{border-collapse: collapse;}
+TD, TH {padding: 3px; border: 1px solid black;}
+{% endblock %}
+
+
+{% block page_content %}
+
+<h1>Your shopping cart</h1>
+
+<table class="'cart" width="100%" align="center" border="1px" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Image</th>
+        <th>Laptop</th>
+        <th>Quantity</th>
+        <th>Remove</th>
+        <th>Unit price</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+        {% with laptop=item.laptop %}
+        <tr>
+            <td width="30%">
+                <a href="{{ laptop.get_absolute_url }}">
+                    <img src="{% if laptop.image_1 %}
+                                    {{ laptop.image_1.url }}
+                                {% else %}
+                                    {% static 'img/no_image.jpg' %}
+                                {% endif %}" width="100%">
+
+                </a>
+            </td>
+            <td width="26%">{{ laptop.name }}</td>
+            <td width="11%">{{ item.quantity }}</td>
+            <td width="11%"><a href="{% url 'cart_remove' laptop.pk %}">Remove</a></td>
+            <td class="num" width="11%">${{ item.price }}</td>
+            <td class="num" width="11%">${{ item.total_price }}</td>
+        </tr>
+        {% endwith %}
+    {% endfor %}
+    <tr class="total">
+        <td>Total</td>
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_total_price }}</td>
+    </tr>
+    </tbody>
+</table>
+<p class="text-right">
+    <a href="{% url 'shop' %}" class="button light">Continue shopping</a>
+    <a href="#" class="button">Checkout</a>
+</p>
+{% endblock %}

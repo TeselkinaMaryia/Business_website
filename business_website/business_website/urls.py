@@ -28,6 +28,7 @@ urlpatterns = [
     path('ask/', include('ask.urls'), name='ask'),
     path('shop/', include('django.contrib.auth.urls')),
     path('shop/', include('shop.urls'), name='shop'),
+    path('cart/', include('cart.urls'), name='cart')
 ]
 
 if settings.DEBUG:

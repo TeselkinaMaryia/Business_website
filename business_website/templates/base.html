@@ -11,6 +11,7 @@
             crossorigin="anonymous"></script>
     <style>
         body {background: #f4f4f4;}
+        {% block style_content %} {% endblock %}
     </style>
 
 </head>
@@ -93,7 +94,6 @@
             {% endif %}
 
 
-
             {% if user.is_authenticated %}
             <button type="button" class="btn btn-outline-primary me-2"><a class="nav-link" href="{% url 'logout' %}">
                 Logout</a></button>
@@ -103,11 +103,9 @@
             {% endif %}
 
 
-
-
             <button type="button" class="btn btn-primary"><a class="nav-link" href="{% url 'register' %}">Sign-up</a>
             </button>
-            <a href="/">
+            <a href="{% url 'cart' %}">
                 <button class="btn btn-primary" type="button" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-cart2"

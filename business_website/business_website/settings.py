@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'news_final.apps.NewsFinalConfig',
     'rest_framework',
     'django_filters',
-    'shop.apps.ShopConfig'
+    'shop.apps.ShopConfig',
+    'cart.apps.CartConfig'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,5 @@ MEDIA_URL = 'media/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+CART_SESSION_ID = 'cart'
