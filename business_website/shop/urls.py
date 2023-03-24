@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import UserEditProfile, PasswordsChangeViews
 
 urlpatterns = [
     path('', views.shop_main, name='shop'),
@@ -8,14 +9,9 @@ urlpatterns = [
     path('login/', views.login_user, name='login'),
     path('register/', views.register, name='register'),
     path('logout/', views.logout_user, name='logout'),
-    path('search/', views.search_brand, name='search_brand')
+    path('search/', views.search_brand, name='search_brand'),
+    path('edit_profile/', UserEditProfile.as_view(), name='edit_profile'),
+    path('password/', PasswordsChangeViews.as_view(template_name='registration/change_password.html')),
+    path('password_success', views.password_success, name='password_success')
 ]
 
-# accounts/ login/ [name='login']
-# accounts/ logout/ [name='logout']
-# accounts/ password_change/ [name='password_change']
-# accounts/ password_change/done/ [name='password_change_done']
-# accounts/ password_reset/ [name='password_reset']
-# accounts/ password_reset/done/ [name='password_reset_done']
-# accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
-# accounts/ reset/done/ [name='password_reset_complete']

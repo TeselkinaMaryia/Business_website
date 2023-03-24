@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from . import forms
+from django.views import generic
+from django.urls import reverse_lazy
+from .forms import EditProfileForm, RegisterUserForm, PasswordChangingForm
+from django.contrib.auth.views import PasswordChangeView
 from . import models
 from cart import forms
 
@@ -50,7 +51,7 @@ def login_user(request):
 
 def register(request):
     if request.method == 'POST':
-        form = forms.RegisterUserForm(request.POST)
+        form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -59,7 +60,7 @@ def register(request):
             login(request, user)
             return redirect('shop')
     else:
-        form = forms.RegisterUserForm()
+        form = RegisterUserForm()
     context = {
         'form': form
     }
@@ -82,3 +83,21 @@ def search_brand(request):
         return render(request, 'shop/searched_laptops.html', context)
     else:
         return render(request, 'shop/searched_laptops.html')
+
+
+class UserEditProfile(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = 'registration/edit_profile.html'
+    success_url = reverse_lazy('shop')
+
+    def get_object(self):
+        return self.request.user
+
+
+class PasswordsChangeViews(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('password_success')
+
+
+def password_success(request):
+    return render(request, 'registration/password_success.html')

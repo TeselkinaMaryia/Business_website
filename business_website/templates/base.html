@@ -12,6 +12,7 @@
     <style>
         body {background: #f4f4f4;}
         {% block style_content %} {% endblock %}
+
     </style>
 
 </head>
@@ -42,26 +43,10 @@
                     About
                 </button>
                 <ul class="dropdown-menu">
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="{% url 'about' %}">About</a>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="{% url 'leadership' %}">Leadership</a>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="{% url 'history' %}">History</a>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink"
-                                                                       href="{% url 'contacts' %}">Contact</a>
-                        </button>
-                    </li>
+                    <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
+                    <li><a class="dropdown-item" href="{% url 'leadership' %}">Leadership</a></li>
+                    <li><a class="dropdown-item" href="{% url 'history' %}">History</a></li>
+                    <li><a class="dropdown-item" href="{% url 'contacts' %}">Contact</a></li>
                 </ul>
             </div>
 
@@ -71,16 +56,11 @@
                     News
                 </button>
                 <ul class="dropdown-menu">
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink" href="{% url 'news' %}">News</a>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="dropdown-item" type="button"><a class="NavigationLink" href="{% url 'events' %}">Events</a>
-                        </button>
-                    </li>
+                    <li><a class="dropdown-item" href="{% url 'news' %}">News</a></li>
+                    <li><a class="dropdown-item" href="{% url 'events' %}">Events</a></li>
                 </ul>
             </div>
+
             <li><a href="{% url 'career' %}" class="nav-link px-2 link-dark">Career</a></li>
             <li><a href="{% url 'ask' %}" class="nav-link px-2 link-dark">ASK</a></li>
             <li><a href="{% url 'shop' %}" class="nav-link px-2 link-dark">Shop</a></li>
@@ -89,7 +69,7 @@
 
         <div class="col-md-3 text-end">
             {% if user.is_authenticated %}
-            <button type="button" class="btn btn-outline-primary me-2"><a class="nav-link" href="{% url 'login' %}">
+            <button type="button" class="btn btn-outline-primary me-2"><a class="nav-link" href="{% url 'edit_profile' %}">
                 {{ user.username }}</a></button>
             {% endif %}
 
