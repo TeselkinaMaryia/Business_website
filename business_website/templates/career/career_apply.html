@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+Career
+{% endblock %}
+
+{% block page_content %}
+
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'career' %}">Career</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'vacancies' %}">Vacancies in the company</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="true" href="{% url 'apply' %}">Apply to the company</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="card-body">
+    <h5 class="card-title" align="center">Interview application form</h5>
+    <form method="post" action="{% url 'apply' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            There was an error with your form!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Apply</button>
+    </form>
+</div>
+
+
+{% endblock %}

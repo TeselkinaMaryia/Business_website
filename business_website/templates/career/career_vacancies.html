@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+Career
+{% endblock %}
+
+{% block page_content %}
+
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'career' %}">Career</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="true" href="{% url 'vacancies' %}">Vacancies in the company</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'apply' %}">Apply to the company</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body"  align="center">
+        <h5 class="card-title">Vacancies</h5>
+        <p class="card-text">
+        <div class="card" style="width: 60%;">
+            <div class="card-header">
+                All vacancies
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for vacancy in all_vacancies %}
+                <li class="list-group-item"><a class="nav-link" href="{% url 'vacancy_more' vacancy.pk %}">{{ vacancy.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

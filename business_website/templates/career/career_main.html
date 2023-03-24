@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title_content %}
 Career
 {% endblock %}
@@ -10,21 +10,48 @@ Career
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="true" href="#">Active</a>
+                <a class="nav-link active" aria-current="true" href="{% url 'career' %}">Career</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{% url 'vacancies' %}">Vacancies in the company</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link" href="{% url 'apply' %}">Apply to the company</a>
             </li>
         </ul>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
 </div>
+<br>
+<h4>There's a Path for Everyone.</h4>
+<p class="card-text">BUSINETWORK is the best place to build a career from the ground up – period. We believe no
+    other company can match our combination of making an impact at scale and our culture of promoting from
+    within, from entry-level roles all the way to C-suite executives.
+
+    There are 2.3 million proud BUSINETWORK associates across the globe, from truck unloaders working their
+    first
+    jobs to some of the most influential executives in the industry – and everything in between. In fact, our
+    CEO – Doug McMillon – has been in both roles, and his story isn’t uncommon among Walmart’s top leaders.
+
+    Simply put, BUSINETWORK offers unmatched opportunity. Our unique combination of pathways, perks and pay mean
+    you
+    can build just about any career you want here, no matter where you start or what you aspire to do.</p>
+<br>
+<div align="center">
+    <img src="{% static 'careers/career.jpg' %}" alt="career" height="8%" width="60%">
+</div>
+<br><br>
+<h4>Pathways: Training and Education to Build a Future</h4>
+
+<p>There’s a path for everyone at BUSINETWORK. We have a culture of promoting from within, from entry-level roles to
+    C-suite executives.
+    Entry-level associates receive their first promotion in seven months, on average.
+    Approximately 75% of our U.S. store, club and field management started their careers as hourly associates.
+    Even our CEO, Doug McMillon, started as an hourly associate in a distribution center in Arkansas. He’s not alone
+    – many company leaders began their careers working in stores, clubs or distribution centers.
+    Our people represent the communities we serve and we are deeply committed to advancing equity and inclusion to
+    ensure there’s a path of opportunity for everyone to be successful. Our annual Culture, Diversity, Equity and
+    Inclusion (CDEI) report shows our progress on this front while outlining the steps we continue to take to create
+    a BUSINETWORK for everyone.</p>
+
 
 {% endblock %}
