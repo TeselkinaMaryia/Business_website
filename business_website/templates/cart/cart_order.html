@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+Order
+{% endblock %}
+
+{% block page_content %}
+
+<div class="order-info">
+    <h3>Your order</h3>
+    <ul>
+        {% for item in cart %}
+        <li>
+            {{ item.quantity }} * {{ item.laptop.name }}
+            <span>$ {{ item.total_price }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<h5 class="card-title" align="center">If you want to order the goods, please fill in the form</h5>
+<form method="post" action="{% url 'order' %}">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        There was an error with your form!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    {{ form.as_p }}
+    <h5><strong>The total price - $ {{ cart.get_total_price }}</strong></h5>
+    <button class="btn btn-secondary">Order</button>
+</form>
+
+{% endblock %}
