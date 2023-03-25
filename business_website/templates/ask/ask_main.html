@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title_content %}
+Ask
+{% endblock %}
+
+{% block page_content %}
+<h2 align="center">Choose the category and write your question!</h2>
+<br>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    {% for category in object_list %}
+    <div class="card">
+        <img src="{{ category.image.url }}" class="card-img-top" alt="category">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ category.name }}</h5>
+            <a href="{% url 'all_questions' category.name %}" class="btn btn-primary">Ask a question</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,7 +1,9 @@
 from django.urls import path
+from .views import AskMain
 from . import views
 
 urlpatterns = [
-    path('', views.ask_main, name='ask'),
-
+    path('', AskMain.as_view(), name='ask'),
+    path('<category>/', views.all_question, name='all_questions'),
+    path('<category>/<int:pk>/', views.all_comments, name='all_comments')
 ]
