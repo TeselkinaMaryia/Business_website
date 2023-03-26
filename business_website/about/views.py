@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import models
+from . import forms
 
 
 def about_main(request):
@@ -37,4 +38,18 @@ def senior_employees_more(request, pk):
 
 
 def contacts(request):
-    return render(request, 'about_contacts.html')
+    form = forms.ContactForm()
+    if request.method == 'POST':
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            contact_us = models.Cantact(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                subject=form.cleaned_data['subject'],
+                message=form.cleaned_data['message'],
+            )
+            contact_us.save()
+    context = {
+        'form': form,
+    }
+    return render(request, 'about_contacts.html', context)
