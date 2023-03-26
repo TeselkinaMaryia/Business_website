@@ -38,11 +38,11 @@ def events_category(request, category):
 
 def events_more(request, pk):
     conference = models.Conference.objects.get(pk=pk)
+    registered_people = models.Registration.objects.filter(conference=conference)
 
-    if models.Registration.objects.all():
+    if registered_people:
         get_places = []
-        reg_seats = models.Registration.objects.all()
-        for people in reg_seats:
+        for people in registered_people:
             get_places.append(people.number_of_people)
         free_places = conference.number_of_people - sum(get_places)
         form = forms.RegistrationForm()

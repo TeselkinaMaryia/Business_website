@@ -6,13 +6,30 @@ from .forms import EditProfileForm, RegisterUserForm, PasswordChangingForm
 from django.contrib.auth.views import PasswordChangeView
 from . import models
 from cart import forms
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+class ShopMain(generic.ListView):
+    model = models.Laptops
+    paginate_by = 4
+    template_name = 'shop/shop_main.html'
 
 
 def shop_main(request):
-    laptops = models.Laptops.objects.all().order_by('brand')
+    laptops = models.Laptops.objects.all().order_by('category')
+    paginator = Paginator(laptops, 3)
+    page = request.GET.get('page')
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
     context = {
         'laptops': laptops,
+        'items': items
     }
+
     return render(request, 'shop/shop_main.html', context)
 
 

@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
-from .views import UserEditProfile, PasswordsChangeViews
+from .views import UserEditProfile, PasswordsChangeViews, ShopMain
 
 urlpatterns = [
-    path('', views.shop_main, name='shop'),
+    path('', ShopMain.as_view(), name='shop'),
     path('brand/', views.shop_brand, name='brand'),
     path('<int:pk>/', views.goods_more, name='goods_more'),
     path('login/', views.login_user, name='login'),
