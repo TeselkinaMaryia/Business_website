@@ -29,7 +29,16 @@ Career
         {% if form.errors %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             There was an error with your form!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        {% if form.cleaned_data %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Your apply was sent!
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                    aria-label="Close"></button>
         </div>
         {% endif %}
 

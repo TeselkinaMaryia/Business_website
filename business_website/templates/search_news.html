@@ -7,11 +7,12 @@ Search
 {% block page_content %}
 
 
-  {% if searched %}
-  <h1 align="center">You Searched for {{ searched }}</h1>
-  <br>
-  <div class="'row">
-  {% for one in news %}
+{% if searched %}
+<h1 align="center">You Searched for {{ searched }}</h1>
+<br>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    {% for one in news %}
     <div class="col-md-4">
         <img class="card-img-top" src="{{ one.image.url }}">
         <div class="card-body">
@@ -25,12 +26,11 @@ Search
         </div>
     </div>
     {% endfor %}
-  </div>
+</div>
 
-  {% else %}
-  <h1 align="center">Did you forget to search?</h1>
-  {% endif %}
-
+{% else %}
+<h1 align="center">Did you forget to search?</h1>
+{% endif %}
 
 
 {% endblock %}
